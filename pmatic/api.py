@@ -153,6 +153,7 @@ class AbstractAPI(utils.LogMixin):
                                   "the CCU has just been started, please wait some time "
                                   "and retry.")
             else:
+                print(msg)
                 raise PMException("[%s] %s: %s (Code: %s, Request: %r)" % (method_name_int,
                                                         msg["error"]["name"],
                                                         msg["error"]["message"],

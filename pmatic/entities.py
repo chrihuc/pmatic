@@ -232,7 +232,7 @@ class Channel(utils.LogMixin, Entity):
         """
         self._values.clear()
         for value_spec in self._ccu.api.interface_get_paramset_description(interface="BidCos-RF",
-                                                    address=self.address, paramsetType="VALUES"):
+                                                    address=self.address, paramsetKey="VALUES"):
             self._init_value_spec(value_spec)
 
         self._register_saved_callbacks()
@@ -1379,6 +1379,9 @@ class HM_Sen_LI_O(Device):
 class HM_RCV_50(Device):
     type_name = "HM-RCV-50"
 
+    # Make methods available
+    def __getattr__(self, attr):
+        return getattr(self.channels[2], attr)
 
 
 # Funk-Tür-/ Fensterkontakt

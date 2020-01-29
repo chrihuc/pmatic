@@ -436,12 +436,12 @@ class EventHandler(utils.LogMixin, object):
                 val = d.pop(key)
                 if isinstance(val, list):
                     for index, item in enumerate(val):
-                        val[index] = item.decode("utf-8")
+                        val[index] = item
 
                 elif utils.is_byte_string(val):
                     val = val.decode("utf-8")
 
-                new_key = key.lower().decode("utf-8")
+                new_key = key.lower()
 
                 if new_key in [ "aes_active", "roaming" ]:
                     val = val == 1
